@@ -197,7 +197,7 @@ function scatterplot () {
         mouseover(selectedItem, d, currentValues)
 
         if (window.innerWidth <= 768) {
-          d3.select(this).on('click')(d)
+          selectedItem.on('click')(d)
         }
       })
       .on('mouseout', mouseout)
@@ -209,6 +209,7 @@ function scatterplot () {
           newCheckVal = false
         }
         d3.select('input[name="comparison-country"][data-iso="' + d.ISO + '"]').property('checked', newCheckVal)
+
         d3.select(checkbox).property('checked', newCheckVal).on('change')()
       })
       .merge(circles)
@@ -502,6 +503,11 @@ function scatterplot () {
 
   chart.updateGuidelines = function (d, action = 'show') {
     const guidelines = d3.select('.g-guidelines')
+
+    if (window.innerWidth <= 768) {
+      guidelines.classed('active', false)
+      return
+    }
 
     if (action == 'show') {
       guidelines.classed('active', true)

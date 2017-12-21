@@ -57,6 +57,26 @@ function createPlot (args) {
   }
   const COLORS = ['#d3d3d3', '#58a897', '#83badc', '#3b75bb', '#a483a8', '#f7890e']
 
+  const formatComma = d3.format(',.3s')
+  const formatSig = d3.format(',.2s')
+  const formatSigPercentage = d3.format('.3r')
+
+  function chooseFormat (value, indicator) {
+    if (indicators[indicator].is_percentage) {
+      return formatSigPercentage(value) + '%'
+    } else if (indicators[indicator].range[0] < 1 || indicators[indicator].range[1] < 1) {
+      return formatSigPercentage(value)
+    } else if (indicators[indicator].no_formatting) {
+      return formatSig(value)
+    } else {
+      return formatComma(value)
+    }
+  }
+
+  function formatter (value) {
+    return value.replace('G', ' billion').replace('M', ' million').replace('T', ' trillion')
+  }
+
   function loadData () {
     let obj = args.data.reduce(function (data, row) {
       // Modify row properties
@@ -506,17 +526,23 @@ function createPlot (args) {
   }
 
   function showSelectedTooltip (selectedCountries) {
-    let tooltips = d3.selectAll('.tooltip-selected').data(selectedCountries, d => d)
+    let tooltips = d3.select('body').selectAll('.tooltip-selected').data(selectedCountries, d => d)
 
-    tooltips.transition()
-      .duration(transitionDuration)
-      .style('left', d => checkPos('pageX', 'left', 'scrollX', d) + 'px')
-      .style('top', d => checkPos('pageY', 'top', 'scrollY', d) + 'px')
+    tooltips
+      .html(function (d) {
+        return tooltipBody(d)
+      })
+      .transition()
+        .duration(transitionDuration)
+        .style('left', d => checkPos('pageX', 'left', 'scrollX', d) + 'px')
+        .style('top', d => checkPos('pageY', 'top', 'scrollY', d) + 'px')
 
     tooltips.enter().append('div')
       .attr('class', 'tooltip tooltip-selected')
       .attr('data-iso', d => d)
-      .html(d => `<p class="tooltip-heading">${data.countries[d].country}</p>`)
+      .html(function (d) {
+        return tooltipBody(d)
+      })
       .style('left', d => checkPos('pageX', 'left', 'scrollX', d) + 'px')
       .style('top', d => checkPos('pageY', 'top', 'scrollY', d) + 'px')
       .on('click', function (d) {
@@ -532,12 +558,35 @@ function createPlot (args) {
 
     tooltips.exit().remove()
 
+    function tooltipBody (d) {
+      let tooltipBody = `<p class="tooltip-body">`
+      let axes = ['x', 'y']
+      axes.forEach(function (axis) {
+        tooltipBody += formatTooltipValue(currentAxes[axis].name, data.countries[d].years[currentYear][currentAxes[axis].name])
+      })
+      tooltipBody += `</p>`
+      return `<p class="tooltip-heading">${data.countries[d].country}</p>${tooltipBody}`
+    }
+
     function checkPos (event, direction, scroll, d) {
       if (d3.event && d3.event.target.__data__ != undefined && d3.event.target.__data__.ISO == d) {
         return d3.event[event]
       } else {
-        return d3.selectAll('circle[data-iso="' + d + '"][data-year="' + currentYear + '"]').node().getBoundingClientRect()[direction] + window[scroll]
+        return d3.selectAll('circle[data-iso="' + d + '"][data-year="' + currentYear + '"]').node().getBoundingClientRect()[direction] + window[scroll] + 5
       }
+    }
+
+    function formatTooltipValue (key, value) {
+      let label = indicators[key]['name_' + lang]
+      let unit = indicators[key]['units_' + lang]
+      let needsPercentage = false
+      let amount
+      if (indicators[key].is_prefix) {
+        amount = unit + formatter(chooseFormat(value, indicators[key].name))
+      } else {
+        amount = formatter(chooseFormat(value, indicators[key].name)) + ' ' + unit
+      }
+      return `<span class="tooltip-label">${label}:</span> ${amount}<br />`
     }
   }
 

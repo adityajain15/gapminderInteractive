@@ -1,6 +1,6 @@
 import * as plot from './js/createPlot'
-import Data from './data/advanced-data-20171220.csv'
-import Indicators from './data/advanced-indicators-20171221-1.csv'
+import Data from './data/advanced-data-20171221-2.csv'
+import Indicators from './data/advanced-indicators-20171221-2.csv'
 import './scss/main.scss'
 import intro from 'intro.js'
 
@@ -75,7 +75,7 @@ function assignAnnotations () {
     showStepNumbers: false,
     steps: [
       {
-        intro: '<p>China’s transformation from a developing country into an emerging global power is likely to be one of the most consequential factors in twenty-first century international politics. Its economy is now the second largest in the world, and in the process hundreds of millions of people have been lifted out of poverty.</p><p>Yet questions persist as to whether China is a developed or developing country – or both.</p><p>The China Development Tracker empowers users to explore various indicators of development, and compare China with other countries.</p>',
+        intro: '<p>China’s emergence as a global power is likely to be one of the most consequential factors in twenty-first century international politics. Its economy is now the second largest in the world, and in the process hundreds of millions of people have been lifted out of poverty.</p><p>Yet questions persist as to whether China is a developed or developing country – or both.</p><p>The China Development Tracker empowers users to explore various indicators of development, and compare China to other countries.</p>',
         tooltipClass: 'intro-firstSlide'
       },
       {
@@ -116,16 +116,16 @@ function assignAnnotations () {
       },
       {
         element: document.querySelector('.chart-primary'),
-        intro: 'By 2015, the size of China’s economy increased by more than 10 times, per capita incomes rose by a factor of 25, and average life expectancy increased by almost seven years. Importantly, China’s life expectancy in 2015 remained three and a half years behind the average of high-income economies.',
+        intro: 'By 2015, the size of China’s economy had increased more than 10 times, per capita incomes rose by a factor of 25, and average life expectancy improved by almost seven years. Importantly, China’s life expectancy in 2015 remained three and a half years behind the average of high-income economies.',
         position: 'right'
       },
       {
         element: document.querySelector('.chart-primary'),
-        intro: '<p>The Development Tracker makes it easy to visually compare the development levels of different countries.</p><p>For instance, when comparing China to India and South Africa, we can see that all three countries have followed very different paths.</p>',
+        intro: '<p>The China Development Tracker makes it easy to visually compare the development levels of different countries.</p><p>For instance, when comparing China to India and South Africa, we can see that all three countries have followed very different paths.</p>',
         position: 'right'
       },
       {
-        intro: '<p>The Development Tracker is preloaded with several economic and social indicators.</p><p>We hope this tool helps you to better understand China’s level of development. Enjoy!</p>'
+        intro: '<p>The China Development Tracker is preloaded with several economic and social indicators.</p><p>We hope this tool helps you to better understand China’s level of development. Enjoy!</p>'
       }
     ]
   })

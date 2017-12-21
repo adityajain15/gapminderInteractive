@@ -1005,7 +1005,7 @@ path.item {
   height: auto;
   margin: 0 15px;
   padding: 8px 8px 10px;
-  visibliity: hidden;
+  visibility: hidden;
   opacity: 0;
   border: 1px solid #728c99;
   background-color: #fff; }
@@ -1028,9 +1028,13 @@ path.item {
     display: block;
     opacity: 1;
     z-index: 15;
-    cursor: pointer; }
+    cursor: pointer;
+    visibility: visible; }
     .tooltip.tooltip-selected .tooltip-heading {
       margin-bottom: 0; }
+    @media screen and (min-width: 48em) {
+      .tooltip.tooltip-selected .tooltip-body {
+        display: none; } }
 
 /*----------  Legends  ----------*/
 /*===============================
