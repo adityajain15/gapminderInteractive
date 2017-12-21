@@ -13,6 +13,8 @@ let transitionDuration
 function chooseFormat (value, indicator) {
   if (indicators[indicator].is_percentage) {
     return formatSigPercentage(value) + '%'
+  } else if (indicators[indicator].range[0] < 1 || indicators[indicator].range[1] < 1) {
+    return formatSigPercentage(value)
   } else if (indicators[indicator].no_formatting) {
     return formatSig(value)
   } else {
@@ -252,14 +254,22 @@ function scatterplot () {
         axisLeft = d3.axisLeft(scales[axis].type).tickSizeOuter(0)
 
         if (currentValues.axes[axis].scaleType == 'log') {
-          axisLeft.ticks(5, '.3s')
+          if (indicators[currentValues.axes[axis].name].range[0] < 1 || indicators[currentValues.axes[axis].name].range[1] < 1) {
+            axisLeft.ticks(5, '.3r')
+          } else {
+            axisLeft.ticks(5, '.3s')
+          }
         }
       } else if (scales[axis].direction == 'bottom') {
         axisBottomScale = axis
         axisBottom = d3.axisBottom(scales[axis].type).tickSizeOuter(0).tickSizeInner(-height)
 
         if (currentValues.axes[axis].scaleType == 'log') {
-          axisBottom.ticks(5, '.3s')
+          if (indicators[currentValues.axes[axis].name].range[0] < 1 || indicators[currentValues.axes[axis].name].range[1] < 1) {
+            axisBottom.ticks(5, '.3r')
+          } else {
+            axisBottom.ticks(5, '.3s')
+          }
         }
       }
     })
