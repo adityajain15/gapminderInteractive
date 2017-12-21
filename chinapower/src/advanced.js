@@ -229,7 +229,6 @@ function calculateBreakpoint () {
 
 function resize () {
   breakpoint = calculateBreakpoint()
-  loadIntro()
 }
 
 window.addEventListener('DOMContentLoaded', init)
