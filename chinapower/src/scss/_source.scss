@@ -1,0 +1,24 @@
+/*==============================
+=            Source            =
+==============================*/
+.source {
+  margin-top: 3.5rem;
+  text-align: right;
+
+  @include breakpoint("medium") {
+    margin-top: 2rem;
+  }
+
+  svg {
+    width: 300px;
+    height: auto;
+  }
+
+  p {
+    font-size: 0.8rem;
+    line-height: 1.1;
+    margin: 0;
+    text-align: right;
+    color: gray;
+  }
+}
