@@ -160,6 +160,7 @@ function createPlot (args) {
           currentAxes[axis].scaleType = 'linear'
         }
       }
+      axisVars[axis].sort()
     })
   }
 

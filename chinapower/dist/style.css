@@ -935,14 +935,19 @@ p.instructions {
   @media screen and (min-width: 48em) {
     .chart {
       max-height: 600px; } }
+  .chart text {
+    font-family: "Hind", sans-serif; }
+
+svg {
+  shape-rendering: geometricPrecision; }
 
 .g-axis line, .g-axis path {
   stroke: #333; }
 
 .g-axis text {
   fill: #333;
-  font-size: 12px;
-  font-size: 0.75rem; }
+  font-size: 14px;
+  font-size: 0.875rem; }
 
 .g-axis .tick line {
   stroke: #c5c5c5; }
@@ -951,15 +956,15 @@ p.instructions {
   display: none; }
 
 .g-axis .axis__label {
-  font-size: 14px;
-  font-size: 0.875rem;
+  font-size: 16px;
+  font-size: 1rem;
   text-transform: uppercase;
   fill: #000;
   text-anchor: middle; }
   @media screen and (min-width: 48em) {
     .g-axis .axis__label {
-      font-size: 16px;
-      font-size: 1rem; } }
+      font-size: 18px;
+      font-size: 1.125rem; } }
 
 .item {
   fill-opacity: 0.8; }
@@ -1149,11 +1154,11 @@ p.filter-desc {
 
 .filter-axis-x .filter-select,
 .filter-axis-y .filter-select {
-  width: calc(65% - 0.5rem); }
+  width: calc(63% - 0.5rem); }
 
 .filter-axis-x .filter-select + .filter-select,
 .filter-axis-y .filter-select + .filter-select {
-  width: calc(35% - 0.5rem);
+  width: 37%;
   margin-left: 0.5rem; }
 
 .filter-swap-axes {

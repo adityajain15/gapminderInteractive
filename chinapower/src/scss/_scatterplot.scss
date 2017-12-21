@@ -9,6 +9,14 @@
   @include breakpoint("medium") {
     max-height: 600px;
   }
+
+  text {
+    font-family: $font-hind;
+  }
+}
+
+svg {
+  shape-rendering: geometricPrecision;
 }
 
 .g-axis {
@@ -17,7 +25,7 @@
   }
   text {
     fill: $gray;
-    @include fontSize(12px);
+    @include fontSize(14px);
   }
 
   .tick line {
@@ -29,13 +37,13 @@
   }
 
   .axis__label {
-    @include fontSize(14px);
+    @include fontSize(16px);
     text-transform: uppercase;
     fill: $black;
     text-anchor: middle;
 
     @include breakpoint("medium") {
-      @include fontSize(16px);
+      @include fontSize(18px);
     }
   }
 

@@ -195,6 +195,10 @@ function scatterplot () {
       .on('mouseover', function (d) {
         let selectedItem = d3.select(this)
         mouseover(selectedItem, d, currentValues)
+
+        if (window.innerWidth <= 768) {
+          d3.select(this).on('click')(d)
+        }
       })
       .on('mouseout', mouseout)
       .on('click', function (d) {
