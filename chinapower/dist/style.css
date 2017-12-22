@@ -1649,7 +1649,7 @@ p.filter-desc {
 ==============================*/
 .source {
   margin-top: 3.5rem;
-  margin-bottom: 2rem;
+  padding-bottom: 2rem;
   text-align: right; }
   @media screen and (min-width: 48em) {
     .source {
