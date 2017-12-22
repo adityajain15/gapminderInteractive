@@ -75,7 +75,7 @@ function assignAnnotations () {
     showStepNumbers: false,
     steps: [
       {
-        intro: '<p>China’s emergence as a global power is likely to be one of the most consequential factors in twenty-first century international politics. Its economy is now the second largest in the world, and in the process hundreds of millions of people have been lifted out of poverty.</p><p>Yet questions persist as to whether China is a developed or developing country – or both.</p><p>The China Development Tracker empowers users to explore various indicators of development, and compare China to other countries.</p>',
+        intro: '<p>China’s emergence as a global power is likely to be one of the most consequential factors in twenty-first century international politics. Its economy is now the second largest in the world, and in the process hundreds of millions of people have been lifted out of poverty.</p><p>Yet questions persist as to whether China is a developed or developing country – or both.</p><p>The China Development Tracker empowers users to explore various indicators of development and compare China to other countries.</p>',
         tooltipClass: 'intro-firstSlide'
       },
       {
