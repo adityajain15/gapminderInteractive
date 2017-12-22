@@ -7,18 +7,23 @@
 <link href="style.css" rel="stylesheet"></head>
 <body>
     <div class="container">
-        <div class="sidebar-options sidebar-options-open">Options</div>
-        <h1 class="title">Global Life Expectancy Since 1990</h1>
+        <div class="sidebar-options sidebar-options-open hide-on-load">Options</div>
+        <header class="page-title hide-on-load">
+            <h1 class="title"></h1>
+            <p class="desc"></p>
+            <p class="comparisons is-hidden"><strong>Recommended Comparisons:</strong> <span class="comparisons-countries"></span></p>
+        </header>
         <div class="loading-container">
             <div class="loading"></div>
         </div>
         <div class="content-wrapper row">
             <div class="chart-container col-xs-12 col-md-9">
-                <div class="chart-color-legend" data-hint="The colors of each bubble correspond to the World Bank’s development classification, which uses GNI per capita (Atlas method) to calculate the levels of development. Orange represents high income OECD countries; yellow represents other high income economies; green represents upper-middle income economies; dark blue represents lower-middle income economies; and light blue represents low income economies." data-position="bottom">
-                    <span class="filter-label">World Bank Classification</span>
+                <div class="chart-color-legend">
+                    <div class="filter-axis-c"></div>
+                    <div class="chart-color-legend-list"></div>
                 </div>
                 <div class="chart chart-primary"></div>
-                <div id="timeline">
+                <div id="timeline" class="hide-on-load">
                     <div id="playbtn" class="play">
                         <div class="play-bg">
                             <span class="play-icon"></span>
@@ -30,7 +35,7 @@
             <div class="sidebar col-xs-12 col-md-3">
                 <div class="sidebar-options sidebar-options-close">Close</div>
                 <div class="filter-option filter-axis-x">
-                    <span class="filter-label">X-Axis Variable</span>
+                    <span class="filter-label"><span class="axis-type"></span> (X-Axis)</span>
                 </div>
                 <div class="filter-option filter-swap-axes">
                     <button class="filter-swap" title="Swap Axes">
@@ -38,16 +43,14 @@
                     </button>
                 </div>
                 <div class="filter-option filter-axis-y">
-                    <span class="filter-label">Y-Axis Variable</span>
+                    <span class="filter-label"><span class="axis-type"></span> (Y-Axis)</span>
                 </div>
                 <div class="filter-option filter-axis-r">
-                    <span class="filter-label">Circle Radius Variable</span>
+                    <span class="filter-label">Circle Radius</span>
                 </div>
-                <!-- <div class="filter-option chart-radius-legend">
-                    <span class="filter-label">Compare Data Sets</span>
-                    <div class="chart-radius-legend-svg"></div>
-                    <p class="filter-desc">Hover over a circle to compare its radius variable to the data set's maximum and minimum values.</p>
-                </div> -->
+                <div class="filter-option filter-axis-c">
+                    <span class="filter-label">Color</span>
+                </div>
                 <div class="filter-option filter-region">
                     <span class="filter-label">Select Countries</span>
                     <input type='text' class='country-search' name="country-search" placeholder="Search">
