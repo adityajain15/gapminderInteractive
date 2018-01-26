@@ -10,7 +10,8 @@ function createPlot (args) {
   const yearRange = document.getElementById('year-range')
   const searchWarning = d3.select('.search-warning')
 
-  let lang
+  let lang = args.language
+  let strings = args.strings
 
   let data
   let years
@@ -74,7 +75,7 @@ function createPlot (args) {
   }
 
   function formatter (value) {
-    return value.replace('G', ' billion').replace('M', ' million').replace('T', ' trillion')
+    return value.replace('G', ' ' + strings.chart.billion[lang]).replace('M', ' ' + strings.chart.million[lang]).replace('T', ' ' + strings.chart.trillion[lang])
   }
 
   function loadData () {
@@ -424,17 +425,17 @@ function createPlot (args) {
       .html(function (d) {
         let label = d
         if (d == 0) {
-          label = 'No Data'
+          label = strings.incomeLevels.noData[lang]
         } else if (d == 1) {
-          label = 'Poor'
+          label = strings.incomeLevels.poor[lang]
         } else if (d == 2) {
-          label = 'Low'
+          label = strings.incomeLevels.low[lang]
         } else if (d == 3) {
-          label = 'Lower-Middle'
+          label = strings.incomeLevels.lowerMiddle[lang]
         } else if (d == 4) {
-          label = 'Upper-Middle'
+          label = strings.incomeLevels.upperMiddle[lang]
         } else if (d == 5) {
-          label = 'High'
+          label = strings.incomeLevels.high[lang]
         }
         return '<span style="background-color:' + scaleC(d) + '"></span>' + label
       })
@@ -488,7 +489,7 @@ function createPlot (args) {
 
     regionsCont.append('button')
       .attr('class', 'clear-filter')
-      .text('Clear selected countries')
+      .text(strings.filtering.clearSelected[lang])
       .on('click', function () {
         d3.selectAll('input[name="country"]').property('checked', false)
         drawPrimaryChart()
@@ -758,13 +759,13 @@ function createPlot (args) {
 
   function searchItem (iso) {
     if (!data.countries[iso]) {
-      searchWarning.text('No data available for this item')
+      searchWarning.text(strings.filtering.noData[lang])
       return
     }
 
     let itemInput = d3.select('input[name="country"]#' + iso)
     if (itemInput.property('disabled')) {
-      searchWarning.text('No data available for this item for the current year.')
+      searchWarning.text(strings.filtering.noDataCurrentYear[lang])
       return
     }
 
@@ -819,7 +820,8 @@ function createPlot (args) {
       currentYear: currentYear,
       scaleC: scaleC,
       axes: currentAxes,
-      lang: lang
+      lang: lang,
+      strings: strings
     }
 
     chart.init({
@@ -852,12 +854,20 @@ function createPlot (args) {
     }
   }
 
-  function checkLanguage () {
-    lang = 'eng'
+  function loadLangStrings() {
+    let items = d3.selectAll('.translate-text')
+    items.each(function(item, i) {
+      let node = d3.select(this)
+      let section = node.attr('data-translate-section')
+      let key = node.attr('data-translate-key')
+      node.text(strings[section][key][lang])
+    })
+
+    d3.select('.country-search').attr('placeholder', strings.filtering.search[lang])
   }
 
   function init () {
-    checkLanguage()
+    loadLangStrings()
     loadData()
     setupRegionFilter()
     search()

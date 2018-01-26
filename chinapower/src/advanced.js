@@ -3,22 +3,30 @@ import Data from './data/advanced-data-20171221-2.csv'
 import Indicators from './data/advanced-indicators-20180126.csv'
 import './scss/main.scss'
 import intro from 'intro.js'
+import translations from './js/translations'
+import strings from './js/translationStrings'
 
 const introJs = intro.introJs()
 let plotted
 let breakpoint = calculateBreakpoint()
+let lang = translations.displayLang()
+const langStrings = strings.strings
 
 function init () {
   plotted = plot.createPlot({
     data: Data,
     indicators: Indicators,
-    useHints: true
+    useHints: true,
+    language: lang,
+    strings: langStrings
   })
   plotted.init()
   loadIntro()
 }
 
 function loadIntro () {
+  let landingContent = document.querySelector('.landing-content p')
+  landingContent.innerHTML = langStrings.intro.landing[lang]
   setupRestartTourBtn()
   if (breakpoint != 'xsmall' && breakpoint != 'small') {
     assignAnnotations()
@@ -29,6 +37,7 @@ function loadIntro () {
 function setupTourBtns () {
   let introBtn = document.querySelector('.btn-intro')
   if (introBtn) {
+    introBtn.innerHTML = langStrings.intro.takeTour[lang]
     introBtn.addEventListener('click', event => {
       hideLanding()
       startIntro()
@@ -37,6 +46,7 @@ function setupTourBtns () {
 
   let chartBtn = document.querySelector('.btn-chart')
   if (chartBtn) {
+    chartBtn.innerHTML = langStrings.intro.skipTracker[lang]
     chartBtn.addEventListener('click', function () {
       exploreChart()
     })
@@ -45,6 +55,7 @@ function setupTourBtns () {
 
 function setupRestartTourBtn () {
   let restartBtn = document.querySelector('.btn-intro-restart')
+  restartBtn.innerHTML = langStrings.intro.retakeTour[lang]
   restartBtn.addEventListener('click', function () {
     plotted.resetChart()
     startIntro()
@@ -68,64 +79,64 @@ function startIntro () {
 
 function assignAnnotations () {
   introJs.setOptions({
-    skipLabel: 'Skip the Tour',
+    skipLabel: langStrings.intro.skipLabel[lang],
     hidePrev: true,
     hideNext: true,
-    doneLabel: 'Use the Tracker',
+    doneLabel: langStrings.intro.doneLabel[lang],
     showStepNumbers: false,
     steps: [
       {
-        intro: '<p>China’s emergence as a global power is likely to be one of the most consequential factors in twenty-first century international politics. Its economy is now the second largest in the world, and in the process hundreds of millions of people have been lifted out of poverty.</p><p>Yet questions persist as to whether China is a developed or developing country – or both.</p><p>The China Development Tracker empowers users to explore various indicators of development and compare China to other countries.</p>',
+        intro: langStrings.intro.step0[lang],
         tooltipClass: 'intro-firstSlide'
       },
       {
         element: document.querySelector('circle[data-iso="CHN"]'),
-        intro: 'Each country is represented as a bubble. The size of each bubble is determined by the size of a country’s economy.',
+        intro: langStrings.intro.step1[lang],
         position: 'right',
         tooltipClass: 'intro-circleSelect'
       },
       {
         element: document.querySelector('.filter-axis-x'),
-        intro: 'The X-Axis represents per capita income.',
+        intro: langStrings.intro.step2[lang],
         position: 'left'
       },
       {
         element: document.querySelector('.chart-color-legend'),
-        intro: 'The colors of each bubble correspond to the income groups assigned by the World Bank.',
+        intro: langStrings.intro.step3[lang],
         position: 'bottom'
       },
       {
         element: document.querySelector('.chart-primary'),
-        intro: 'The interactive is currently set to 1990. You can see that two and a half decades ago China was much poorer than wealthy countries like the United States.',
+        intro: langStrings.intro.step4[lang],
         position: 'right'
       },
       {
         element: document.querySelector('.filter-axis-y'),
-        intro: 'Use the Y-Axis to select a social indicator, such as life expectancy.',
+        intro: langStrings.intro.step5[lang],
         position: 'left'
       },
       {
         element: document.querySelector('.chart-mean-line'),
-        intro: 'The purple horizontal line represents the average value for high-income economies. For life expectancy, you can see that in 1990 this average was 75.3 years.',
+        intro: langStrings.intro.step6[lang],
         position: 'right'
       },
       {
         element: document.querySelector('.chart-container'),
-        intro: 'Use the play button to see how these indicators have changed over time.',
+        intro: langStrings.intro.step7[lang],
         position: 'bottom'
       },
       {
         element: document.querySelector('.chart-primary'),
-        intro: 'By 2015, the size of China’s economy had increased more than 10 times, per capita incomes rose by a factor of 25, and average life expectancy improved by almost seven years. Importantly, China’s life expectancy in 2015 remained three and a half years behind the average of high-income economies.',
+        intro: langStrings.intro.step8[lang],
         position: 'right'
       },
       {
         element: document.querySelector('.chart-primary'),
-        intro: '<p>The China Development Tracker makes it easy to visually compare the development levels of different countries.</p><p>For instance, when comparing China to India and South Africa, we can see that all three countries have followed very different paths.</p>',
+        intro: langStrings.intro.step9[lang],
         position: 'right'
       },
       {
-        intro: '<p>The China Development Tracker is preloaded with several economic and social indicators.</p><p>We hope this tool helps you to better understand China’s level of development. Enjoy!</p>'
+        intro: langStrings.intro.step10[lang]
       }
     ]
   })
