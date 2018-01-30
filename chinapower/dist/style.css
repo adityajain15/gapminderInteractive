@@ -2160,3 +2160,33 @@ tr.introjs-showElement > th {
   100% {
     transform: scale(0.9);
     opacity: 0.0; } }
+
+/*---------- Language Switcher  ----------*/
+/*=========================================
+=            Language Switcher            =
+=========================================*/
+.lang-switcher {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .lang-switcher li {
+    display: inline-block;
+    text-align: center;
+    padding-left: 0.25rem; }
+    .lang-switcher li:not(:first-child) {
+      border-left: 1px solid #d4d0cb; }
+  .lang-switcher button {
+    display: block;
+    background-color: transparent;
+    border-radius: 0;
+    border: 0;
+    color: #ed392a;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    text-align: center; }
+    .lang-switcher button:hover {
+      color: #c42d21; }
+    .lang-switcher button.active {
+      text-decoration: underline;
+      color: #c42d21; }

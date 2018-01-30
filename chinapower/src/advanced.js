@@ -1,10 +1,10 @@
 import * as plot from './js/createPlot'
 import Data from './data/advanced-data-20171221-2.csv'
-import Indicators from './data/advanced-indicators-20180126.csv'
+import Indicators from './data/advanced-indicators-20180130.csv'
 import './scss/main.scss'
 import intro from 'intro.js'
 import translations from './js/translations'
-import strings from './js/translationStrings'
+import strings from './js/translationStrings-20180130'
 
 const introJs = intro.introJs()
 let plotted
