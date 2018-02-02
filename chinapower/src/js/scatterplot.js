@@ -22,8 +22,8 @@ function chooseFormat (value, indicator) {
   }
 }
 
-function formatter (value) {
-  return value.replace('G', ' billion').replace('M', ' million').replace('T', ' trillion')
+function formatter (value, strings, lang) {
+  return value.replace('G', ' ' + strings.chart.billion[lang]).replace('M', ' ' + strings.chart.million[lang]).replace('T', ' ' + strings.chart.trillion[lang])
 }
 
 const chart = scatterplot()
@@ -351,10 +351,9 @@ function scatterplot () {
 
       line
         .on('mouseover', function () {
-          showAvgTooltip(indicators[currentValues.axes.x.name].name, 'test')
           let name = indicators[currentValues.axes.x.name][getLanguageProperty('name', currentValues.lang)]
           let unit = indicators[currentValues.axes.x.name][getLanguageProperty('units', currentValues.lang)]
-          let amount = formatter(chooseFormat(avg, currentValues.axes.x.name)) + ' ' + unit
+          let amount = formatter(chooseFormat(avg, currentValues.axes.x.name), currentValues.strings, currentValues.lang) + ' ' + unit
           showAvgTooltip(name, amount)
         })
         .on('mouseout', hideTooltip)
@@ -381,7 +380,7 @@ function scatterplot () {
         .on('mouseover', function () {
           let name = indicators[currentValues.axes.y.name][getLanguageProperty('name', currentValues.lang)]
           let unit = indicators[currentValues.axes.y.name][getLanguageProperty('units', currentValues.lang)]
-          let amount = formatter(chooseFormat(avg, currentValues.axes.y.name)) + ' ' + unit
+          let amount = formatter(chooseFormat(avg, currentValues.axes.y.name), currentValues.strings, currentValues.lang) + ' ' + unit
           showAvgTooltip(name, amount)
         })
         .on('mouseout', hideTooltip)
@@ -442,7 +441,7 @@ function scatterplot () {
         .attr('x', parseFloat(this.getAttribute('cx')) + boundingClientRect.width / 2)
         .attr('y', parseFloat(this.getAttribute('cy')) + boundingClientRect.height / 2)
         .attr('class', 'radius-legend-label')
-        .text(formatter(chooseFormat(d, currentValues.axes.r.name)))
+        .text(formatter(chooseFormat(d, currentValues.axes.r.name), currentValues.strings, currentValues.lang))
     })
   }
 
@@ -599,9 +598,9 @@ function showTooltip (d, item, currentValues) {
     let needsPercentage = false
     let amount
     if (indicators[key].is_prefix) {
-      amount = unit + formatter(chooseFormat(value, indicators[key].name))
+      amount = unit + formatter(chooseFormat(value, indicators[key].name), currentValues.strings, currentValues.lang)
     } else {
-      amount = formatter(chooseFormat(value, indicators[key].name)) + ' ' + unit
+      amount = formatter(chooseFormat(value, indicators[key].name), currentValues.strings, currentValues.lang) + ' ' + unit
     }
     return `<span class="tooltip-label">${label}:</span> ${amount}<br />`
   }

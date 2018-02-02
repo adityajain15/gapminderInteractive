@@ -1,10 +1,10 @@
 import * as plot from './js/createPlot'
-import Data from './data/advanced-data-20171221-2.csv'
-import Indicators from './data/advanced-indicators-20180130.csv'
+import Data from './data/advanced-data-20180202.csv'
+import Indicators from './data/advanced-indicators-20180202.csv'
 import './scss/main.scss'
 import intro from 'intro.js'
 import translations from './js/translations'
-import strings from './js/translationStrings-20180130'
+import strings from './js/translationStrings'
 
 const introJs = intro.introJs()
 let plotted
@@ -83,6 +83,8 @@ function assignAnnotations () {
     hidePrev: true,
     hideNext: true,
     doneLabel: langStrings.intro.doneLabel[lang],
+    prevLabel: langStrings.intro.prevLabel[lang],
+    nextLabel: langStrings.intro.nextLabel[lang],
     showStepNumbers: false,
     steps: [
       {
@@ -226,7 +228,10 @@ function setupHints () {
     }
 
     filter.addEventListener('change', function (e) {
-      document.querySelector('.introjs-hints').innerHTML = ''
+      let introjsHints = document.querySelector('.introjs-hints')
+      if (introjsHints) {
+        introjsHints.innerHTML = ''
+      }
       introJs.addHints()
       introJs.showHints()
     })

@@ -84,12 +84,21 @@ function createPlot (args) {
       row['ISO-Year'] = row.ISO + '-' + row.year
 
       // Group Regions
-      let region = row['region_' + lang]
+      let region = row['region']
       data.regions = data.regions || {}
       data.regions[region] = data.regions[region] || {}
       data.regions[region][row.ISO] = data.regions[region][row.ISO] || {
         country: row['country_' + lang],
         iso: row.ISO
+      }
+
+      data.region_names = data.region_names || {}
+      if (!data.region_names[region]) {
+        data.region_names[region] = {
+          'eng': row['region_eng'],
+          'standard': row['region_standard'],
+          'traditional': row['region_traditional']
+        }
       }
 
       // Group Years
@@ -342,7 +351,7 @@ function createPlot (args) {
       .selectAll('option')
       .data(scaleTypes).enter()
       .append('option')
-        .text(d => d.charAt(0).toUpperCase() + d.slice(1))
+        .text(d => strings.filtering[d][lang])
         .property('value', d => d)
         .property('selected', d => d === currentAxes[axis].scaleType)
 
@@ -424,7 +433,10 @@ function createPlot (args) {
       .attr('class', d => 'color' + d)
       .html(function (d) {
         let label = d
-        if (d == 0) {
+
+        if (colorDomain.value == 'region' && d != 0 && d != 'China') {
+          label = data.region_names[d][lang]
+        } else if (d == 0) {
           label = strings.incomeLevels.noData[lang]
         } else if (d == 1) {
           label = strings.incomeLevels.poor[lang]
@@ -436,7 +448,10 @@ function createPlot (args) {
           label = strings.incomeLevels.upperMiddle[lang]
         } else if (d == 5) {
           label = strings.incomeLevels.high[lang]
+        } else if (d == 'China') {
+          label = data.countries.CHN.country
         }
+
         return '<span style="background-color:' + scaleC(d) + '"></span>' + label
       })
 
@@ -454,7 +469,7 @@ function createPlot (args) {
     regions.forEach(function (region) {
       regionsCont.append('h3')
         .attr('class', 'accordion-toggle')
-        .text(region)
+        .text(data.region_names[region][lang])
         .on('click', function () {
           d3.select(this).classed('open', !d3.select(this).classed('open'))
           d3.select(this.nextSibling).classed('collapsed', !d3.select(this.nextSibling).classed('collapsed'))
@@ -854,9 +869,9 @@ function createPlot (args) {
     }
   }
 
-  function loadLangStrings() {
+  function loadLangStrings () {
     let items = d3.selectAll('.translate-text')
-    items.each(function(item, i) {
+    items.each(function (item, i) {
       let node = d3.select(this)
       let section = node.attr('data-translate-section')
       let key = node.attr('data-translate-key')
