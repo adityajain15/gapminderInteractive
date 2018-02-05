@@ -337,8 +337,8 @@ function createPlot (args) {
   }
 
   function setupAxisTypeLabel () {
-    d3.select('.filter-axis-x .axis-type').text(indicators[currentAxes.x.name].type)
-    d3.select('.filter-axis-y .axis-type').text(indicators[currentAxes.y.name].type)
+    d3.select('.filter-axis-x .axis-type').text(strings.filtering[indicators[currentAxes.x.name].type][lang])
+    d3.select('.filter-axis-y .axis-type').text(strings.filtering[indicators[currentAxes.y.name].type][lang])
   }
 
   function setupAxisSelectType (axis) {

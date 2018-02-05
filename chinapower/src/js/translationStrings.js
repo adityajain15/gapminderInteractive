@@ -26,17 +26,17 @@ const strings = {
       traditional: '再次使用向導'
     },
     or: {
-    	eng: 'or',
+      eng: 'or',
       standard: '或者',
       traditional: '或者'
     },
     prevLabel: {
-    	eng: 'Back',
+      eng: 'Back',
       standard: '上一步',
       traditional: '上一步'
     },
     nextLabel: {
-    	eng: 'next',
+      eng: 'next',
       standard: '下一步',
       traditional: '下一步'
     },
@@ -178,6 +178,16 @@ const strings = {
       eng: 'Log',
       standard: 'Log',
       traditional: 'Log'
+    },
+    Income: {
+      eng: 'Income',
+      standard: '人均收入',
+      traditional: '人均收入'
+    },
+    Indicator: {
+      eng: 'Indicator',
+      standard: '社会指标',
+      traditional: '社會指標'
     }
   },
   incomeLevels: {
