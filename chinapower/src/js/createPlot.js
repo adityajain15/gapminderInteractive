@@ -75,7 +75,7 @@ function createPlot (args) {
   }
 
   function formatter (value) {
-    return value.replace('G', ' ' + strings.chart.billion[lang]).replace('M', ' ' + strings.chart.million[lang]).replace('T', ' ' + strings.chart.trillion[lang])
+    return value.replace('k', ' ' + strings.chart.thousand[lang]).replace('G', ' ' + strings.chart.billion[lang]).replace('M', ' ' + strings.chart.million[lang]).replace('T', ' ' + strings.chart.trillion[lang])
   }
 
   function loadData () {

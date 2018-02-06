@@ -43,12 +43,12 @@ const strings = {
     landing: {
       eng: 'The China Development Tracker enables users to compare the relationship between China’s economic growth and its development.',
       standard: '“中国发展图鉴”能够让使用者比较中国经济增长和中国发展这二者的联系。',
-      traditional: '“中國發展圖鑒”這個專欄能夠讓使用者比較中國經濟增長和中國發展這二者的聯系'
+      traditional: '“中國發展圖鑒”這個專欄能夠讓使用者比較中國經濟增長和中國發展這二者的聯系。'
     },
     step0: {
       eng: '<p>China’s emergence as a global power is likely to be one of the most consequential factors in twenty-first century international politics. Its economy is now the second largest in the world, and in the process hundreds of millions of people have been lifted out of poverty.</p><p>Yet questions persist as to whether China is a developed or developing country – or both.</p><p>The China Development Tracker empowers users to explore various indicators of development and compare China to other countries.</p>',
-      standard: '作为一个重要的世界大国，中国的崛起很有可能会给国际政治在21世纪带来巨大的影响。中国已经成长为世界第二大经济体， 数以亿计的中国人在这个过程中更脱离了贫困。 但是，中国究竟是一个发达国家，还是发展中国家，亦或同时身为二者的这个问题持续困扰着我们。“中国发展图鉴”让使用者能够有机会了解关于中国的不同的发展指标，并将中国和其他国家进行比较。',
-      traditional: '作爲一個重要的世界大國，中國的崛起很有可能會給國際政治在21世紀帶來巨大的影響。中國已經成長爲世界第二大經濟體， 數以億計的中國人在這個過程中更脫離了貧困。 但是，中國究竟是一個發達國家，還是發展中國家，亦或同時身爲二者的這個問題持續困擾着我們。“中國發展圖鑒”讓使用者能夠有機會了解關於中國的不同的發展指標，並將中國和其他國家進行比較。'
+      standard: '作为一个重要的世界大国，中国的崛起很有可能会给国际政治在21世纪带来巨大的影响。中国已经成长为世界第二大经济体， 数以亿计的中国人更在这个过程中脱离了贫困。 但是，中国究竟是一个发达国家，还是发展中国家，亦或同时身为二者这个问题持续困扰着我们。“中国发展图鉴”让使用者能够有机会了解关于中国的不同发展指标，并将中国和其他国家进行比较。',
+      traditional: '作爲一個重要的世界大國，中國的崛起很有可能會給國際政治在21世紀帶來巨大的影響。中國已經成長爲世界第二大經濟體， 數以億計的中國人更在這個過程中脫離了貧困。 但是，中國究竟是一個發達國家，還是發展中國家，亦或同時身爲二者這個問題持續困擾着我們。“中國發展圖鑒”讓使用者能夠有機會了解關於中國的不同發展指標，並將中國和其他國家進行比較。'
     },
     step1: {
       eng: 'Each country is represented as a bubble. The size of each bubble is determined by the size of a country’s economy.',
@@ -242,6 +242,11 @@ const strings = {
       eng: 'trillion',
       standard: '万亿',
       traditional: '萬億'
+    },
+    thousand: {
+      eng: 'k',
+      standard: '（千美元）',
+      traditional: '（千美元）'
     }
   }
 }
