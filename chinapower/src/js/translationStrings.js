@@ -241,7 +241,7 @@ const strings = {
     trillion: {
       eng: 'trillion',
       standard: '万亿',
-      traditional: '萬億'
+      traditional: '兆'
     },
     thousand: {
       eng: 'k',
