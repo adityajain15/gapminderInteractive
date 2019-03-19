@@ -741,7 +741,7 @@ body {
   margin: 0;
   padding: 0;
   color: #333;
-  --china-color: $red;
+  --china-color: #ed392a;
   --breakpoint: "xsmall"; }
   @media screen and (min-width: 35em) {
     body {
@@ -2082,7 +2082,7 @@ tr.introjs-showElement > th {
     left: 40%;
     font-size: 8px;
     font-size: 0.5rem;
-    color: #1D435E; }
+    color: #1d435e; }
 
 .introjs-hint-no-anim .introjs-hint-dot {
   -webkit-animation: none;
