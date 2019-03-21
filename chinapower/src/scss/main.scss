@@ -1,6 +1,6 @@
-@import 'mixins';
-@import 'flexbox';
-@import url('https://fonts.googleapis.com/css?family=Hind|Roboto');
+@import "mixins";
+@import "flexbox";
+@import url("https://fonts.googleapis.com/css?family=Hind|Roboto");
 
 // Variables
 $white: #fff;
@@ -20,15 +20,15 @@ $disabled-button-color: #4a4a4a;
 $disabled-button-bg: $off-white;
 $form-focus: $off-white;
 $dark-gray: #d4d0cb;
-$dark-blue: #1D435E;
+$dark-blue: #1d435e;
 $dark-purple: #69518d;
 $grid-lines: #c5c5c5;
 $color__text-button-blue: $blue-gray;
 $color__background-button-blue: #2b3d46;
 $color__background-button-gray: #d6d6d6;
 
-$font-hind: 'Hind', sans-serif;
-$font-roboto: 'Roboto', sans-serif;
+$font-hind: "Hind", sans-serif;
+$font-roboto: "Roboto", sans-serif;
 
 // General
 *,
@@ -43,19 +43,19 @@ body {
   margin: 0;
   padding: 0;
   color: $gray;
-  --china-color: $red;
+  --china-color: #{$red};
   --breakpoint: "xsmall";
 
   @include breakpoint("small") {
-      --breakpoint: "small";
+    --breakpoint: "small";
   }
 
   @include breakpoint("medium") {
-      --breakpoint: "medium";
+    --breakpoint: "medium";
   }
 
   @include breakpoint("large") {
-      --breakpoint: "large";
+    --breakpoint: "large";
   }
 
   &.sidebar-active {
@@ -153,7 +153,6 @@ p.instructions {
       margin-left: 0.5rem;
     }
 
-
     .checkbox-container {
       display: inline;
       margin-right: 1rem;
@@ -189,22 +188,22 @@ p.instructions {
 @import "form-elements";
 
 /*----------  Timeline  ----------*/
-@import 'nouislider';
+@import "nouislider";
 
 /*----------  Accordion  ----------*/
-@import 'accordion';
+@import "accordion";
 
 /*----------  Buttons  ----------*/
-@import 'buttons';
+@import "buttons";
 
 /*----------  Loading  ----------*/
 @import "loading";
 
 /*----------  Source  ----------*/
-@import 'source';
+@import "source";
 
 /*----------  IntroJS  ----------*/
-@import 'introjs';
+@import "introjs";
 
 /*---------- Language Switcher  ----------*/
-@import 'lang-switcher';
+@import "lang-switcher";
