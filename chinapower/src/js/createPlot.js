@@ -712,6 +712,7 @@ function createPlot (args) {
   }
 
   function removeEmptyDataPoints (data, disableCheckboxes = true) {
+    console.log(data)
     let filtered = data.filter(function (column) {
       if (column[currentAxes.x.name] && column[currentAxes.y.name]) {
         if (disableCheckboxes) {
