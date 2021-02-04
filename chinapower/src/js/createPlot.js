@@ -526,7 +526,7 @@ function createPlot (args) {
         if (i == minYear) {
           prevYear = i
         }
-
+        console.log(data.countries[iso].years[i])
         data.countries[iso].years[i].prevX = data.countries[iso].years[prevYear][currentAxes.x.name] || data.countries[iso].years[i][currentAxes.x.name]
         data.countries[iso].years[i].prevY = data.countries[iso].years[prevYear][currentAxes.y.name] || data.countries[iso].years[i][currentAxes.y.name]
       }
