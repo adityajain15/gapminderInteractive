@@ -2,8 +2,8 @@
 title,title,,,,,,,,,,,,,,,,,,,,,,,,,,
 world_bank_classification,color,World Bank Income Level,,,c,1,,,,,,,,,,,,,,,,,,,,,
 region_eng,color,Regions,,,c,,,,,,,,,,,,,,,,,,,,,,
-gdp_ppp,econ,Gross Domestic Product (PPP),,,r,1,1990,2019,,,,,,,,,,,,,,,,,,,
-population,Social,Population,,,r,,1990,2019,,,,,,People,,,,,,,,,,1,,,
-gni_per_capita,Income,GNI per capita,,,x,1,1990,2019,,,,,,$,,,1,,,,,,,,1,,
-gdp_per_capita_ppp,Income,GDP per capita (PPP),,,x,,1990,2019,,,,,,$,,,1,,,,,,,,1,,
-rate_deaths_air_pollution,Indicator,Deaths from Air Pollution,,,y,1,1990,2019,,,,,,"Per 100,000 people",,,,"Air pollution contributed to 6.7 million deaths globally in 2019. Over half of these deaths were concentrated in China and India, the world’s two most populous developing countries. Use this interactive to explore the impacts of air pollution on death rates around the world.",,,"Number of premature deaths caused by air pollution per 100,000 people",,,1,,,BRA;IND;RUS;PAK;USA
+gdp_ppp,econ,Gross Domestic Product (PPP),,,r,1,2010,2019,,,,,,,,,,,,,,,,,,,
+population,Social,Population,,,r,,2010,2019,,,,,,People,,,,,,,,,,1,,,
+gni_per_capita,Income,GNI per capita,,,x,1,2010,2019,,,,,,$,,,1,,,,,,,,1,,
+gdp_per_capita_ppp,Income,GDP per capita (PPP),,,x,,2010,2019,,,,,,$,,,1,,,,,,,,1,,
+rate_deaths_air_pollution,Indicator,Deaths from Air Pollution,,,y,1,2010,2019,,,,,,"Per 100,000 people",,,,"Air pollution contributed to 6.7 million deaths globally in 2019. Over half of these deaths were concentrated in China and India, the world’s two most populous developing countries. Use this interactive to explore the impacts of air pollution on death rates around the world.",,,"Number of premature deaths caused by air pollution per 100,000 people",,,1,,,BRA;IND;RUS;PAK;USA
